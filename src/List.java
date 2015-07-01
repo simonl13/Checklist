@@ -6,8 +6,8 @@ public class List {
 	public static void main(String[] args) throws IOException {
 				
 		String command;
-		int dayStatus = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-		String time = dayStatus + ":" + Calendar.getInstance().get(Calendar.MINUTE);
+		int dayStatus = Calendar.getInstance().get(Calendar.HOUR_OF_DAY); //gets 24-hour in order to tell comparison with noon.
+		String time = dayStatus + ":" + Calendar.getInstance().get(Calendar.MINUTE); //gets time.
 		
 		Scanner commandInput = new Scanner(System.in);			
 		
@@ -18,6 +18,8 @@ public class List {
 		else {
 			System.out.println("Good afternoon. It is currently " + time);
 		}
+		
+		Item.loadItems(); //calls LoadItems.
 		
 		System.out.println("What would you like to do?");
 		while(true) {
@@ -39,11 +41,11 @@ public class List {
 				Item.newItem();
 				break;
 			case "list":
-				Item.listItems();
+				Item.listItems(); //calls ListItems
 				break;
 			case "quit":
 				commandInput.close();
-				System.exit(1);
+				System.exit(1); //terminates program.
 			}
 		}
 	}
