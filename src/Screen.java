@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Calendar;
 
-public class List {
+public class Screen {
 	public static void main(String[] args) throws IOException {
 				
 		String command;
