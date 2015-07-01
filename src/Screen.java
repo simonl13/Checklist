@@ -22,7 +22,7 @@ public class Screen {
 		Item.loadItems(); //calls LoadItems.
 		
 		System.out.println("What would you like to do?");
-		while(true) {
+		while(true) { //constantly loops.
 			command = commandInput.next();
 			switch(command) {
 			default:
@@ -45,7 +45,7 @@ public class Screen {
 				break;
 			case "quit":
 				commandInput.close();
-				System.exit(1); //terminates program.
+				System.exit(1); //terminates program. 
 			}
 		}
 	}
