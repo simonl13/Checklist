@@ -11,20 +11,20 @@ import java.util.Scanner;
 
 public class Item {
 
-	static Scanner itemInput = new Scanner(System.in);
+	static Scanner itemInput = new Scanner(System.in); //new Scanner
 	static ArrayList<String> checkList = new ArrayList<>(); //new ArrayList for checklist.
 
 	public static void newItem() throws IOException {
-		FileWriter output = new FileWriter("checklist.txt", true);
+		FileWriter output = new FileWriter("checklist.txt", true); //Uses checklist.txt to score data.
 		System.out.println("What is it you would like to add to the checklist?");
 		String newItem = itemInput.nextLine();
 		
 		output.write(newItem + System.getProperty("line.separator")); //writes item to file.
-		output.flush(); 
+		output.flush(); //flushes output for faster writing.
 
 		checkList.add(newItem); //adds item to array in memory.
-		System.out.println("\"" + newItem + "\" has been added.");
-		output.close();
+		System.out.println("\"" + newItem + "\" has been added."); 
+		output.close(); //closes writer.
 	}
 	
 	public static void listItems() {
@@ -34,15 +34,16 @@ public class Item {
 		else {
 			System.out.println("Checklist for Success!");
 			for (int i = 0; i < checkList.size(); i++) { //displays line for each item in array.
-				System.out.println("#" + i + ". " + checkList.get(i));
+				System.out.println("#" + i + ". " + checkList.get(i)); //prints line for each item
 			}
 		}
 	}
 	
 	public static void removeItem() throws IOException {
 		System.out.println("Which item would you like to remove from the checklist?");
-		int removedItem = itemInput.nextInt();
+		int removedItem = itemInput.nextInt(); 
 
+		//Process to transfer existing file to temporary file in order to exclude the removed item then write to file.
 		File inputFile = new File("checkList.txt");
 		File tempFile = new File("myTempFile.txt");
 		
@@ -62,14 +63,14 @@ public class Item {
 		reader.close();
 		checkList.remove(removedItem);
 		if(tempFile.renameTo(inputFile)) { 
-			//rename for Unix-based
+			//rename for Unix-based - only works on Unix based systems.
 		}
 		else {
 			inputFile.delete(); //if Windows, first deletes old file, then "moves" new file to old file path.
-			Files.move(tempFile.toPath(), inputFile.toPath());
+			Files.move(tempFile.toPath(), inputFile.toPath()); 
 		}
 		
-		System.out.println("Item #" + removedItem + " successfully removed.");
+		System.out.println("Item #" + removedItem + " successfully removed."); //success msg.
 	}
 
 	public static void loadItems() throws IOException {
@@ -79,7 +80,7 @@ public class Item {
 				checkList.add(line); //adds all non-blank lines to the Array.
 			}
 		} catch (FileNotFoundException event){
-			File newFile = new File("checklist.txt");
+			File newFile = new File("checklist.txt"); //if file does not exist, create file.
 			newFile.createNewFile();
 		}
 	}
