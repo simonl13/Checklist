@@ -2,9 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Calendar;
 
-public class Screen {
+public class Logic {
 	public static void main(String[] args) throws IOException {
-				
 		String command;
 		int dayStatus = Calendar.getInstance().get(Calendar.HOUR_OF_DAY); //gets 24-hour in order to tell comparison with noon.
 		String time = dayStatus + ":" + Calendar.getInstance().get(Calendar.MINUTE); //gets time.
