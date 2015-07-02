@@ -83,4 +83,12 @@ public class Item {
 			newFile.createNewFile();
 		}
 	}
+
+	public static void clearAll() throws IOException {
+		File checklistFile = new File ("checklist.txt");
+		checklistFile.delete();
+		System.out.println("Deleted Checklist File.");
+		checkList.clear();
+		System.out.println("Cleared Checklist.");
+	}
 }

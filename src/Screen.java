@@ -31,6 +31,17 @@ public class Screen {
 			case "about":
 				System.out.println("This is a checklist.");
 				break;
+			case "clear":
+				System.out.println("Are you sure you would like to clear all items? (Y/N)");
+				String verify = commandInput.next();
+				if (verify.equalsIgnoreCase("Y")) {
+					Item.clearAll();
+					break;
+				}
+				else {
+					System.out.println("Aborting.");
+					break;
+				}
 			case "remove":
 				Item.removeItem();
 				break;
